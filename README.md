@@ -55,7 +55,8 @@ the document.
  * `serverTimeout`: The timeout for HTTP connections to the server. Default
    2000 (milliseconds).
 
-`callback` will be called with either an error or the TAP test results, parsed
-using [tap-parser](https://npmjs.org/package/tap-parser). Note that the error
-will be null even if some tests failed; the results indicate what tests passed
-or failed.
+`callback` will be called with either an error as the first argument or the 
+parsed TAP test results (via [tap-parser](https://npmjs.org/package/tap-parser)) 
+as the second argument and the raw TAP test results as the third argument. Note 
+that the error will be null even if some tests failed; the results indicate what 
+tests passed or failed.

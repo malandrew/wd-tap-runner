@@ -34,9 +34,9 @@ function runner(src, browser, options, callback) {
         wdTap(url, browser, testOptions, testsComplete);
     }
 
-    function testsComplete(err, data) {
+    function testsComplete(err, data, rawData) {
         server.close(function() {
-            callback(err, data);
+            callback(err, data, rawData);
         });
     }
 }

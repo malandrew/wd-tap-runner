@@ -102,7 +102,7 @@ function stopBrowser(callback) {
 }
 
 function test(callback) {
-    runner(testSrc, browser, function(err, results) {
+    runner(testSrc, browser, function(err, results, rawResults) {
         if (err) {
             console.error(err);
             return callback();
@@ -111,6 +111,13 @@ function test(callback) {
         var output = TapProducer.encode(results);
         console.log('TAP Results:');
         console.log(output);
+
+        if (!rawResults || 
+            typeof rawResults !== 'string' || 
+            rawResults.length !== 92) {
+            console.error('Tests did not pass');
+            return callback();
+        }
 
         if (!results.ok) {
             console.error('Tests did not pass');
